@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+    container_name: 'boralabs-dao-api'
+    ports:
+      - '8090:8080'
+    depends_on:
+      - 'mongo'
+  mongo:
+    image: 'mongo:6.0'
+    container_name: 'boralabs-dao-db'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - MONGO_INITDB_DATABASE=boralabs
+    ports:
+      - '27018:27017'
+    volumes:
+      - ./data/dev/mongo:/data/db

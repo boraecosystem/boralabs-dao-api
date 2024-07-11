@@ -1,0 +1,6 @@
+.idea/
+qodana.yaml
+data/
+config/app.yaml
+main
+build-errors.log
